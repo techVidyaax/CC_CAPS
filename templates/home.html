@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Ticket Booking</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url('https://wallpapercave.com/uwp/uwp4697149.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            font-family: system-ui;
+
+
+        }
+
+        /* Glassmorphism effect for the content card */
+        .content {
+            font-family: system-ui;
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 70px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+            border-radius: 12px;
+            backdrop-filter: blur(10px); /* Apply blur to the background */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: add subtle shadow */
+            color: rgb(255, 161, 37);
+            line-height: 1.8;
+
+
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: white;
+            font-family: system-ui;
+
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            font-family: system-ui;
+
+        }
+
+        li {
+            margin: 10px 0;
+            font-size: 18px;
+            font-family: system-ui;
+
+        }
+
+        a {
+            color: #2bffb5;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: system-ui;
+
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-family: system-ui;
+            font-size: 16px;
+            background-color: #d984f5;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #d984f5;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content">
+        <h1>Welcome to the Bus Ticket Booking System</h1>
+
+        <!-- Display success message if available -->
+        {% if success_message %}
+            <div style="color: rgb(89, 255, 95); font-size: 18px; margin-bottom: 20px; text-align: center;">
+                <strong>{{ success_message }}</strong>
+            </div>
+        {% endif %}
+
+    
+        <ul>
+            {% for bus in buses %}
+                <li style="text-align: center; font-family: system-ui;">
+                    {{ bus.name }}
+                    <ul>
+                        {% for route in routes %}
+                            <li>
+                                <a href="/book_ticket/{{ bus.id }}/{{ route.id }}">
+                                    Book Ticket for {{ bus.name }} from {{ route.start }} to {{ route.end }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <!-- View Bookings Button -->
+        <a href="/view_bookings">
+            <button>View Bookings</button>
+        </a>
+    </div>
+
+</body>
+</html>

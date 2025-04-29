@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Bookings</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url('https://wallpapercave.com/uwp/uwp4697149.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            font-family: system-ui;
+        }
+
+        .content {
+            max-width: 900px;
+            margin: 80px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            color: rgb(255, 161, 37);
+            line-height: 1.8;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            color: white;
+        }
+
+        th, td {
+            border: 1px solid #fff;
+            padding: 12px 16px;
+            text-align: center;
+        }
+
+        th {
+            background-color: rgba(0, 0, 0, 0.3);
+            color: #2bffb5;
+        }
+
+        td {
+            font-size: 16px;
+        }
+
+        p {
+            text-align: center;
+            color: white;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: #2bffb5;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content">
+        <h1>Booked Tickets</h1>
+
+        {% if tickets %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Bus</th>
+                        <th>Route</th>
+                        <th>Passenger Name</th>
+                        <th>Seat Number</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ticket in tickets %}
+                        <tr>
+                            <td>{{ ticket.bus }}</td>
+                            <td>{{ ticket.route }}</td>
+                            <td>{{ ticket.passenger }}</td>
+                            <td>{{ ticket.seat }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No tickets booked yet.</p>
+        {% endif %}
+
+        <a href="/">Back to Home</a>
+    </div>
+
+</body>
+</html>

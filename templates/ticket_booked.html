@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ticket Booked</title>
+</head>
+<body>
+    <h1>Tickets Booked:</h1>
+    <ul>
+        {% for ticket in tickets %}
+            <li>{{ ticket.passenger }} booked a seat {{ ticket.seat }} on {{ ticket.bus }} from {{ ticket.route }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

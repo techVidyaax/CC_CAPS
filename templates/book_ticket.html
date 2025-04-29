@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Ticket</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url('https://wallpapercave.com/uwp/uwp4697149.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            font-family: system-ui;
+        }
+
+        .content {
+            max-width: 600px;
+            margin: 80px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            color: rgb(255, 161, 37);
+            line-height: 1.8;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: white;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: white;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            font-family: system-ui;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #d984f5;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 16px;
+            cursor: pointer;
+            font-family: system-ui;
+        }
+
+        button:hover {
+            background-color: #b063d3;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #2bffb5;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content">
+        <h1>Book Ticket</h1>
+        
+        <h2>{{ bus.name }} - {{ route.start }} to {{ route.end }}</h2>
+        <p style="text-align: center; color: white;">Duration: {{ route.duration }}</p>
+
+        <form method="POST">
+            <label for="passenger_name">Passenger Name:</label>
+            <input type="text" id="passenger_name" name="passenger_name" required>
+
+            <label for="seat_number">Seat Number:</label>
+            <input type="number" id="seat_number" name="seat_number" required>
+
+            <button type="submit">Book Ticket</button>
+        </form>
+
+        <a href="/">Back to Home</a>
+    </div>
+
+</body>
+</html>

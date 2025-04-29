@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
+import os
 
 app = Flask(__name__)
 
@@ -36,7 +37,6 @@ def book_ticket(bus_id, route_id):
         }
         tickets.append(ticket)
         
-        # Redirect to homepage with success message
         return redirect(url_for('home', success="Your ticket has been successfully booked ✅"))
 
     return render_template('book_ticket.html', bus=bus, route=route)
@@ -50,4 +50,5 @@ def ticket_booked():
     return render_template('ticket_booked.html', tickets=tickets)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
